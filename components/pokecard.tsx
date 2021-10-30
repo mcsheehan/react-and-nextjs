@@ -22,8 +22,8 @@ export class Pokecard extends React.Component<PokecardProps> {
 
         return (<div className={[styles.pokecard, styles.animate].join(" ")}>
             <h1 className={styles.pokecardTitle}>{pokemon.name}</h1>
-            <Image className={styles.pokecardImage} src={fancyImage} width="150px" height="150px"/>
-            <img className={styles.pokecardImage} src={image} />
+            {/*<Image className={styles.pokecardImage} src={fancyImage} width="150px" height="150px"/>*/}
+            <img className={styles.pokecardImage} src={fancyImage} />
             <div className={styles.pokecardData}>
                 Type: <span className={[styles.red, styles.bold].join(" ")}>{pokemon.type}</span>
             </div>
