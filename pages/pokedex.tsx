@@ -40,8 +40,8 @@ const Pokedex: NextPage<Props> = (props) => {
             deck2: pokemon.slice(0,4)
         });
 
-    return(<div>
-        <button onClick={() => setPokemon(        {
+    return(<div className={styles.pokedexButtonContainer}>
+        <button className={styles.pokedexRegenerateButton} onClick={() => setPokemon(        {
             deck1: createDeck(pokemon),
             deck2: createDeck(pokemon)
         })}>Regenerate hands</button>

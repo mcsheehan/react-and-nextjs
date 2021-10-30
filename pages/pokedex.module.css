@@ -3,3 +3,18 @@
     justify-content: space-evenly;
     flex-wrap: wrap;
 }
+
+.pokedexRegenerateButton{
+    font-size: 24px;
+    font-weight: bold;
+    padding: 10px 30px 10px 30px;
+    color: #383838;
+    background-color: #56baff;
+    box-shadow: 3px 7px 7px -5px rgb(43, 28, 252);
+    border-color: #a99fff;
+}
+
+.pokedexButtonContainer{
+    margin: 10px;
+    text-align: center;
+}
