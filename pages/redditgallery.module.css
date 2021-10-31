@@ -1,0 +1,24 @@
+.containercentre{
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.redditgallery{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin: 20px;
+    align-items: center;
+    align-content: center;
+    vertical-align: center;
+    alignment: center;
+    text-align: center;
+    width: 80vw;
+}
+
+.redditimage{
+    margin: 2px;
+}
