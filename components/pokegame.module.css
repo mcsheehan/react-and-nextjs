@@ -1,0 +1,19 @@
+.pokegame{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.pokegameHeader{
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.pokegameScores{
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.scores{
+    text-align: center;
+}
