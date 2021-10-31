@@ -1,0 +1,19 @@
+version: 2.1
+
+orbs:
+  node: circleci/node@4.7
+  aws-s3: circleci/aws-s3@2.0
+
+
+workflows:
+  run-npm-command:
+    jobs:
+      - node/run:
+          yarn-run: build
+      - node/run:
+          yarn-run: export
+      - aws-s3/copy:
+          from: build/
+          to: s3://marksheehan.net
+          arguments: --recursive
+      context: aws-deployment
