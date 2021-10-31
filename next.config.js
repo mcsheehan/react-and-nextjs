@@ -12,6 +12,8 @@ module.exports = {
         return {
             '/': { page: '/' },
             '/pokedex': { page: '/pokedex' },
+            '/slots': { page: '/slots' },
+            '/redditPage': { page: '/redditPage' },
         }
     },
 }

@@ -17,9 +17,8 @@ const RedditGallery = (props: RedditPostProps ) => {
         }
 
         return (
-            <a className={styles.hyper} href={postData.url}>
+            <a className={styles.hyper} href={postData.url} key={key}>
                 <img className={styles.redditimage}
-                     key={key}
                      src={postData.thumbnail}
                      height={postData.thumbnail_height + "px"} width={postData.thumbnail_width + "px"} alt={postData.title}
                 />

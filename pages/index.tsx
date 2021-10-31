@@ -1,20 +1,13 @@
 import type {NextPage} from 'next'
 import styles from '../styles/Home.module.css'
-import Link from 'next/link'
 
 const Home: NextPage = () => {
     return (
         <div className={styles.containercentre}>
             <div className={styles.container}>
-                <Link href="/pokedex">
-                    <a>Pokedex</a>
-                </Link>
-                <Link href="/slots">
-                    <a>Slot machine</a>
-                </Link>
-                <Link href="/redditPage">
-                    <a>RedditPage</a>
-                </Link>
+                Hello I&apos;m Mark Sheehan and welcome to my site <br/>
+                I have created a few web applications, which you are free to play with
+                the website is hosted on github
             </div>
         </div>
     )
