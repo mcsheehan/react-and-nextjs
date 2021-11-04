@@ -7,7 +7,7 @@ orbs:
 jobs:
   build-next-app:
     docker:
-      - image: circleci/node
+      - image: cimg/node:lts
     steps:
       - checkout
       - node/install-packages:
