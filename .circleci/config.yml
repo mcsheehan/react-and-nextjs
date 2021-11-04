@@ -4,16 +4,26 @@ orbs:
   node: circleci/node@4.7
   aws-s3: circleci/aws-s3@2.0
 
+jobs:
+  build-next-app:
+    docker:
+      - image: circleci/node
+    steps:
+      - checkout
+      - node/install-packages:
+          pkg-manager: yarn
+      - run:
+          command: yarn run build
+      - run:
+          command: yarn run export
+#    - aws-s3/copy:
+#        from: build/
+#        to: s3://marksheehan.net
+#        arguments: --recursive
 
 workflows:
-  run-npm-command:
+  version: 2
+  build_nextjs_app:
     jobs:
-      - node/run:
-          yarn-run: build
-      - node/run:
-          yarn-run: export
-      - aws-s3/copy:
-          from: build/
-          to: s3://marksheehan.net
-          arguments: --recursive
-      context: aws-deployment
+      - build-next-app:
+          context: aws-deployment
