@@ -16,14 +16,32 @@ jobs:
           command: yarn run build
       - run:
           command: yarn run export
-#    - aws-s3/copy:
-#        from: build/
-#        to: s3://marksheehan.net
-#        arguments: --recursive
+      - store_artifacts:
+          path: ./out
+          destination: website
+      - persist_to_workspace:
+          root: .
+          paths:
+            - out
+
+  deploy-next-app:
+    docker:
+      - image: cimg/node:lts
+    steps:
+    - attach_workspace:
+        at: .
+    - aws-s3/copy:
+        from: build/
+        to: s3://marksheehan.net
+        arguments: --recursive
 
 workflows:
   version: 2
   build_nextjs_app:
     jobs:
-      - build-next-app:
+      - build-next-app
+      - deploy-next-app:
           context: aws-deployment
+          filters:
+            branches:
+              only: deployment
