@@ -1,0 +1,49 @@
+version: 2.1
+
+orbs:
+  node: circleci/node@4.7
+  aws-s3: circleci/aws-s3@2.0
+
+jobs:
+  build-next-app:
+    docker:
+      - image: cimg/node:lts
+    steps:
+      - checkout
+      - node/install-packages:
+          pkg-manager: yarn
+      - run:
+          command: yarn run build
+      - run:
+          command: yarn run export
+      - run:
+          command: zip -r website.zip ./out
+      - store_artifacts:
+          path: ./website.zip
+          destination: website.zip
+      - persist_to_workspace:
+          root: .
+          paths:
+            - out
+
+  deploy-next-app:
+    docker:
+      - image: cimg/node:lts
+    steps:
+    - attach_workspace:
+        at: .
+    - aws-s3/copy:
+        from: build/
+        to: s3://marksheehan.net
+        arguments: --recursive
+
+workflows:
+  version: 2
+  build_nextjs_app:
+    jobs:
+      - build-next-app
+      - deploy-next-app:
+          context: aws-deployment
+          filters:
+            branches:
+              only: deployment
