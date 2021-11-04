@@ -17,10 +17,10 @@ jobs:
       - run:
           command: yarn run export
       - run:
-          command: zip website.zip ./out
+          command: zip -r website.zip ./out
       - store_artifacts:
           path: ./website.zip
-          destination: website
+          destination: website.zip
       - persist_to_workspace:
           root: .
           paths:
