@@ -34,6 +34,12 @@ const Navbar = (props: any) => {
                     <FontAwesomeIcon icon={faGithub} />
                 </a>
             </Link>
+            <Link href="/lightsPage">
+                Lights out
+            </Link>
+            <Link href="/contractorCalculator">
+                Contractor calculator
+            </Link>
         </div>
     </div>
 }
