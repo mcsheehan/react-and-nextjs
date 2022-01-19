@@ -1,6 +1,6 @@
 import styles from "./lightgrid.module.css"
 import {Light} from "./light";
-import {MouseEventHandler, useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 
 
 class LightMatrix {
@@ -16,7 +16,24 @@ class LightMatrix {
         return matrix
     }
 
-    randomiseMatrix(percentage: number): void{
+    toggleSurroundingCells(i: number, j: number) {
+        this.matrix[i][j] = !this.matrix[i][j]
+
+        if (i + 1 < this.width) {
+            this.matrix[i+1][j] = !this.matrix[i+1][j]
+        }
+        if (i - 1 >= 0) {
+            this.matrix[i-1][j] = !this.matrix[i-1][j]
+        }
+        if (j + 1 < this.height) {
+            this.matrix[i][j+1] = !this.matrix[i][j+1]
+        }
+        if (j - 1 >= 0) {
+            this.matrix[i][j-1] = !this.matrix[i][j-1]
+        }
+    }
+
+    randomiseMatrix(percentage: number): void {
         for (let j = 0; j < this.height; j++) {
             for (let i = 0; i < this.width; i++) {
                 const random = (Math.random() * 100) < percentage
@@ -35,7 +52,7 @@ class LightMatrix {
         this.height = height
     }
 
-    toLights() {
+    toLights(callbackWithClicked: ((arg0: number, arg1: number) => void)) {
         const rows = []
 
         for (let j = 0; j < this.height; j++) {
@@ -43,7 +60,8 @@ class LightMatrix {
             for (let i = 0; i < this.width; i++) {
                 const lightOn = this.matrix[i][j]
                 const clickHandler = () => {
-                    console.log("was clicked")
+                    callbackWithClicked(i, j)
+                    console.log(`was clicked ${i} ${j}`)
                 }
 
                 const props = {lightOn, clickHandler}
@@ -78,7 +96,9 @@ const LightGrid = () => {
 
     const height = 8
     const width = 8
-    const [getter, setter] = useState<LightMatrix>(new LightMatrix(width, height))
+
+    const lightMatrix = new LightMatrix(width, height)
+    const [getter, setter] = useState<LightMatrix>(lightMatrix)
 
     useEffect(() => {
         const matrix = new LightMatrix(width, height)
@@ -92,9 +112,16 @@ const LightGrid = () => {
         setter(matrix)
     }
 
+    const callbackWithClicked = (i: number, j: number) => {
+        console.log(`setting ${i} ${j}`)
+        // const matrix = new LightMatrix(width, height)
+        lightMatrix.toggleSurroundingCells(i, j)
+        setter(lightMatrix)
+    }
+
     return (<div className={styles.lightGrid}>
         <button className={styles.randomise} onClick={randomise}>Randomise everything!!!</button>
-        {getter.toLights()}
+        {getter.toLights(callbackWithClicked)}
     </div>)
 }
 
