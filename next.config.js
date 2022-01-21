@@ -1,19 +1,8 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
-    // assetPrefix: './',
+    trailingSlash: true,
     reactStrictMode: true,
     images: {
         domains: ['raw.githubusercontent.com', 'assets.pokemon.com']
-    },
-    exportPathMap: async function (
-        defaultPathMap,
-        { dev, dir, outDir, distDir, buildId }
-    ) {
-        return {
-            '/': { page: '/' },
-            '/pokedex': { page: '/pokedex' },
-            '/slots': { page: '/slots' },
-            '/redditPage': { page: '/redditPage' },
-        }
-    },
+    }
 }

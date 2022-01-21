@@ -16,3 +16,16 @@ a {
 * {
   box-sizing: border-box;
 }
+
+table tr:first-child td:first-child {
+  border-radius: 10px 0 0 0 !important;
+}
+table tr:first-child td:last-child {
+  border-radius: 0 10px 0 0 !important;
+}
+table tr:last-child td:first-child {
+  border-radius: 0 0 0 10px !important;
+}
+table tr:last-child td:last-child {
+  border-radius: 0 0 10px 0 !important;
+}

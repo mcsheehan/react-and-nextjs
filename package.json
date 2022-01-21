@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "export": "next export"
+    "export": "next export",
+    "http-server": "http-server out"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
@@ -23,6 +24,7 @@
     "@types/react": "17.0.30",
     "eslint": "7.23.0",
     "eslint-config-next": "11.1.2",
+    "http-server": "^14.1.0",
     "typescript": "4.4.4",
     "yarn": "^1.22.17"
   }

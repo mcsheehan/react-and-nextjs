@@ -1,0 +1,22 @@
+
+.diceDivider{
+    align-content: center;
+    text-align: center;
+    margin: 20px
+}
+
+.diceDivider button{
+    color: #2b1cfc;
+    background-color: #04AA6D;
+    text-align: center;
+    font-size: 20px;
+    margin: 20px;
+    width: 10em;
+    border-radius: 10px;
+    padding: 0.5em 1.5em 0.5em 1.5em;
+}
+
+.diceDivider button:hover {
+    background-color: #56baff;
+    cursor: pointer;
+}

@@ -1,0 +1,57 @@
+.lightsApp {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.randomise{
+    padding: 1em;
+    background-color: coral;
+    border-radius: 10px;
+    font-size: 1em;
+}
+.randomise:hover {
+    transform: scale(1.15);
+    opacity: 0.9;
+}
+.randomise:active{
+    background-color: blue;
+}
+
+.lightGrid {
+    padding: 1rem;
+    margin: 0.5rem;
+    background-color: aqua;
+    border-radius: 20px;
+    /*width: 1000px;*/
+    /*height: 800px;*/
+    box-shadow: 7px 10px 12px -5px rgba(0, 0, 0, 0.56);
+    border: seagreen solid 3px;
+}
+
+.light {
+    padding: 1rem;
+    margin: 0.1rem;
+    text-align: center;
+    border-radius: 10px;
+    width: 100px;
+    height: 100px;
+    box-shadow: 7px 10px 12px -5px rgba(0, 0, 0, 0.56);
+    border: seagreen solid 3px;
+    background-color: white;
+    transition: background-color 0.7s ease;
+}
+
+.light:hover {
+    transform: scale(1.15);
+    opacity: 0.9;
+}
+
+.lightOn{
+    background-color: gold;
+}
+.lightOff{
+    background-color: rebeccapurple;
+}
