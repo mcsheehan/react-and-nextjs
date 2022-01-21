@@ -7,7 +7,7 @@ const Home: NextPage = () => {
             <div className={styles.container}>
                 Hello I&apos;m Mark Sheehan and welcome to my site <br/>
                 I have created a few web applications, which you are free to play with
-                the website is hosted on github
+                and you can see the code for this website on my github.
             </div>
         </div>
     )
