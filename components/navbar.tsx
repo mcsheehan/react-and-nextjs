@@ -28,17 +28,14 @@ const Navbar = (props: any) => {
                     <FontAwesomeIcon icon={faReddit} size={"lg"}/>
                 </a>
             </Link>
+            <Link href="/lightsOut">
+                Lights out
+            </Link>
             <Link href="https://github.com/mcsheehan">
                 <a>
                     Github &nbsp;
                     <FontAwesomeIcon icon={faGithub} />
                 </a>
-            </Link>
-            <Link href="/lightsPage">
-                Lights out
-            </Link>
-            <Link href="/contractorCalculator">
-                Contractor calculator
             </Link>
         </div>
     </div>

@@ -8,7 +8,7 @@
 
 .randomise{
     padding: 1em;
-    background-color: gold;
+    background-color: coral;
     border-radius: 10px;
     font-size: 1em;
 }
@@ -50,8 +50,8 @@
 }
 
 .lightOn{
-    background-color: aqua;
+    background-color: gold;
 }
 .lightOff{
-    background-color: red;
+    background-color: rebeccapurple;
 }

@@ -15,6 +15,5 @@ export const Light: (props: LightState) => JSX.Element = (props: LightState) => 
         style = [styles.light, styles.lightOn].join(" ")
     }
 
-    const text = lightOn ? "on" : "off"
-    return (<button className={style} onClick={props.clickHandler}>{text}</button>)
+    return (<button className={style} onClick={props.clickHandler}/>)
 }

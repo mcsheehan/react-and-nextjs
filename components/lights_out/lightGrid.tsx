@@ -5,6 +5,17 @@ import {useEffect, useState} from "react";
 
 class LightMatrix {
 
+    matrix: boolean[][]
+    width: number
+    height: number
+
+    constructor(width: number, height: number, matrix?: boolean[][])
+    {
+        this.matrix = matrix ? matrix : this.createEmptyMatrix(width, height)
+        this.width = width
+        this.height = height
+    }
+
     createEmptyMatrix(width: number, height: number): boolean[][] {
         const matrix = []
 
@@ -36,20 +47,9 @@ class LightMatrix {
     randomiseMatrix(percentage: number): void {
         for (let j = 0; j < this.height; j++) {
             for (let i = 0; i < this.width; i++) {
-                const random = (Math.random() * 100) < percentage
-                this.matrix[i][j] = random
+                this.matrix[i][j] = (Math.random() * 100) < percentage
             }
         }
-    }
-
-    matrix: boolean[][]
-    width: number
-    height: number
-
-    constructor(width: number, height: number) {
-        this.matrix = this.createEmptyMatrix(width, height)
-        this.width = width
-        this.height = height
     }
 
     toLights(callbackWithClicked: ((arg0: number, arg1: number) => void)) {
@@ -92,18 +92,22 @@ class LightMatrix {
 }
 
 
-const LightGrid = () => {
+function copyMatrix(oldMatrix: LightMatrix): LightMatrix{
+    return new LightMatrix(oldMatrix.width, oldMatrix.height, oldMatrix.matrix)
+}
 
-    const height = 8
-    const width = 8
+
+const LightGrid = () => {
+    const height = 5
+    const width = 5
 
     const lightMatrix = new LightMatrix(width, height)
     const [getter, setter] = useState<LightMatrix>(lightMatrix)
 
     useEffect(() => {
-        const matrix = new LightMatrix(width, height)
-        matrix.randomiseMatrix(50)
-        setter(matrix)
+        const lightMatrix = new LightMatrix(width, height)
+        lightMatrix.randomiseMatrix(50)
+        setter(lightMatrix)
     }, [])
 
     const randomise = () => {
@@ -114,15 +118,18 @@ const LightGrid = () => {
 
     const callbackWithClicked = (i: number, j: number) => {
         console.log(`setting ${i} ${j}`)
-        // const matrix = new LightMatrix(width, height)
-        lightMatrix.toggleSurroundingCells(i, j)
-        setter(lightMatrix)
+        const newMatrix = copyMatrix(getter)
+        newMatrix.toggleSurroundingCells(i, j)
+        setter(newMatrix)
     }
 
-    return (<div className={styles.lightGrid}>
-        <button className={styles.randomise} onClick={randomise}>Randomise everything!!!</button>
+    return (
+        <>
+        <div className={styles.lightGrid}>
+        <h1>Switch off all the lights</h1>
+        <button className={styles.randomise} onClick={randomise}>Randomise the lights!!!</button>
         {getter.toLights(callbackWithClicked)}
-    </div>)
+    </div></>)
 }
 
 export default LightGrid

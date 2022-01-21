@@ -7,7 +7,7 @@ interface BreakPointAndPercentage {
 }
 
 
-const ContractorCalculator: NextPage  = () => {
+const TaxCalculator: NextPage  = () => {
     // https://www.theaccountancy.co.uk/limited-company/dividends/how-often-can-i-take-dividends-from-my-limited-company-90705.html
     const dividends: Array<BreakPointAndPercentage> = [
         {breakpoint: 0, percentage: 0},
@@ -15,8 +15,8 @@ const ContractorCalculator: NextPage  = () => {
         {breakpoint: 37700, percentage: 32.5},
         {breakpoint: 150000, percentage: 38.1}]
 
-    const tableRows = dividends.map((value) => {
-        return (<tr><td>{value.breakpoint}</td> <td>{value.percentage}</td></tr>)
+    const tableRows = dividends.map((value, index) => {
+        return (<tr key={index}><td>{value.breakpoint}</td> <td>{value.percentage}</td></tr>)
     })
 
     return <div>
@@ -37,4 +37,4 @@ const ContractorCalculator: NextPage  = () => {
     </div>
 }
 
-export default ContractorCalculator
+export default TaxCalculator
