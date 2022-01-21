@@ -33,7 +33,7 @@ jobs:
     - attach_workspace:
         at: .
     - aws-s3/copy:
-        from: build/
+        from: out/
         to: s3://marksheehan.net
         arguments: --recursive
 
@@ -44,6 +44,8 @@ workflows:
       - build-next-app
       - deploy-next-app:
           context: aws-deployment
+          requires:
+            - build-next-app
           filters:
             branches:
-              only: deployment
+              only: main
